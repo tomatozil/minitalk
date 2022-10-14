@@ -6,12 +6,13 @@
 /*   By: jiyun <jiyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:27:12 by jiyun             #+#    #+#             */
-/*   Updated: 2022/10/14 18:25:29 by jiyun            ###   ########.fr       */
+/*   Updated: 2022/10/14 18:28:15 by jiyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
-void init_talk(const siginfo_t *siginfo, pid_t *client_pid, \
+
+void	init_talk(const siginfo_t *siginfo, pid_t *client_pid, \
 		int *character)
 {
 	*client_pid = siginfo->si_pid;
@@ -20,15 +21,15 @@ void init_talk(const siginfo_t *siginfo, pid_t *client_pid, \
 	return ;
 }
 
-void    server_handler(int sig, siginfo_t *siginfo, void *context)
+void	server_handler(int sig, siginfo_t *siginfo, void *context)
 {
-	static pid_t    client_pid;
-	static int  character = -1;
-	static int  bits;
+	static pid_t	client_pid;
+	static int		character = -1;
+	static int		bits;
 
 	(void)context;
 	if (character == -1)
-		return init_talk(siginfo, &client_pid, &character);
+		return (init_talk(siginfo, &client_pid, &character));
 	character = character << 1 | (sig == SIGUSR1);
 	bits++;
 	if (bits == 8)
