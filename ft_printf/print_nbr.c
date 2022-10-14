@@ -6,7 +6,7 @@
 /*   By: jiyun <jiyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:24:35 by jiyun             #+#    #+#             */
-/*   Updated: 2022/10/14 17:24:58 by jiyun            ###   ########.fr       */
+/*   Updated: 2022/10/14 18:06:06 by jiyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*check_base(char type)
 		return ("0123456789ABCDEF");
 }
 
-void	print_nbr_base(unsigned long nbr, char *base, int notation, int *print_byte)
+void	print_nbr_base(unsigned long nbr, char *base, \
+		int notation, int *print_byte)
 {
 	if (nbr / notation)
 		print_nbr_base(nbr / notation, base, notation, print_byte);

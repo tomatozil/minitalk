@@ -6,7 +6,7 @@
 /*   By: jiyun <jiyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:22:24 by jiyun             #+#    #+#             */
-/*   Updated: 2022/10/14 17:23:19 by jiyun            ###   ########.fr       */
+/*   Updated: 2022/10/14 18:05:34 by jiyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_valid_format(const char *format)
 {
 	if (!format)
 		return (0);
-	while(*format)
+	while (*format)
 	{
 		if (*format == '%')
 		{
@@ -39,13 +39,13 @@ void	convert_to(char type, va_list arg_ptr, int *print_byte)
 		print_nbr(type, va_arg(arg_ptr, uintptr_t), print_byte);
 	else if (type == '%')
 		print_char('%', print_byte);
-	else if (ft_strchr("di", type)) // 부호 있는 정수
+	else if (ft_strchr("di", type))
 		print_nbr(type, va_arg(arg_ptr, int), print_byte);
-	else if (ft_strchr("uxX", type)) // 부호 없는 정수(10진법 혹은 16진법)
+	else if (ft_strchr("uxX", type))
 		print_nbr(type, va_arg(arg_ptr, unsigned int), print_byte);
 }
 
-int	ft_printf(const char *format, ... )
+int	ft_printf(const char *format, ...)
 {
 	va_list	arg_ptr;
 	int		print_byte;

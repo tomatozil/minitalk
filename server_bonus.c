@@ -6,7 +6,7 @@
 /*   By: jiyun <jiyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:27:12 by jiyun             #+#    #+#             */
-/*   Updated: 2022/10/14 16:27:42 by jiyun            ###   ########.fr       */
+/*   Updated: 2022/10/14 18:15:10 by jiyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	server_handler(int sig, siginfo_t *siginfo, void *context)
 	bits++;
 	if (bits == 8)
 	{
-		if (character == (int)'\0') {
+		if (character == (int) '\0')
+		{
 			kill(client_pid, SIGUSR2);
 			character = -1;
 		}

@@ -6,7 +6,7 @@
 /*   By: jiyun <jiyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:17:03 by jiyun             #+#    #+#             */
-/*   Updated: 2022/10/14 16:23:35 by jiyun            ###   ########.fr       */
+/*   Updated: 2022/10/14 18:12:00 by jiyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	ft_atoi(const char *str)
 
 int	main(int ac, char **av)
 {
-
 	if (ac != 3)
 	{
 		ft_printf("Write again. Correct format: [PID] [MESSAGE]\n");
