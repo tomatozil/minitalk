@@ -6,26 +6,30 @@
 /*   By: jiyun <jiyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:26:24 by jiyun             #+#    #+#             */
-/*   Updated: 2022/10/14 18:16:49 by jiyun            ###   ########.fr       */
+/*   Updated: 2022/10/14 18:23:48 by jiyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	server_handler(int sig, siginfo_t *siginfo, void *context)
+void init_talk(const siginfo_t *siginfo, pid_t *client_pid, \
+		int *character)
 {
-	static pid_t	client_pid;
-	static int		character = -1;
-	static int		bits;
+	*client_pid = siginfo->si_pid;
+	(*character)++;
+	kill(*client_pid, SIGUSR1);
+	return ;
+}
+
+void    server_handler(int sig, siginfo_t *siginfo, void *context)
+{
+	static pid_t    client_pid;
+	static int  character = -1;
+	static int  bits;
 
 	(void)context;
 	if (character == -1)
-	{
-		client_pid = siginfo->si_pid;
-		character++;
-		kill(client_pid, SIGUSR1);
-		return ;
-	}
+		return init_talk(siginfo, &client_pid, &character);
 	character = character << 1 | (sig == SIGUSR1);
 	bits++;
 	if (bits == 8)
