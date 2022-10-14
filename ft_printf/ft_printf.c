@@ -1,9 +1,18 @@
-//
-// Created by jiyun on 2022/07/19.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jiyun <jiyun@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/14 17:22:24 by jiyun             #+#    #+#             */
+/*   Updated: 2022/10/14 17:23:19 by jiyun            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int is_valid_format(const char *format)
+int	is_valid_format(const char *format)
 {
 	if (!format)
 		return (0);
@@ -20,7 +29,7 @@ int is_valid_format(const char *format)
 	return (1);
 }
 
-void    convert_to(char type, va_list arg_ptr, int *print_byte)
+void	convert_to(char type, va_list arg_ptr, int *print_byte)
 {
 	if (type == 'c')
 		print_char(va_arg(arg_ptr, int), print_byte);
@@ -36,15 +45,11 @@ void    convert_to(char type, va_list arg_ptr, int *print_byte)
 		print_nbr(type, va_arg(arg_ptr, unsigned int), print_byte);
 }
 
-int ft_printf(const char *format, ... )
+int	ft_printf(const char *format, ... )
 {
-	va_list arg_ptr;
-	int     print_byte;
+	va_list	arg_ptr;
+	int		print_byte;
 
-	/* 유효성 검사
-	 * 1. NULL인지
-	 * 2. %가 있다면, 그 뒤에 붙는 서식 지정자가 cspdiuxX 중에 있는지
-	 */
 	if (!is_valid_format(format))
 		return (-1);
 	va_start(arg_ptr, format);
@@ -56,7 +61,7 @@ int ft_printf(const char *format, ... )
 			format++;
 			convert_to(*format, arg_ptr, &print_byte);
 		}
-		else /* 그냥 출력해야 할 문자열일 때 */
+		else
 		{
 			print_char(*format, &print_byte);
 		}

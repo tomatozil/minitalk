@@ -1,9 +1,18 @@
-//
-// Created by jiyun on 2022/07/20.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_char.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jiyun <jiyun@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/14 17:24:16 by jiyun             #+#    #+#             */
+/*   Updated: 2022/10/14 17:24:23 by jiyun            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void    print_char(char c, int *print_byte)
+void	print_char(char c, int *print_byte)
 {
 	*print_byte += write(1, &c, 1);
 }

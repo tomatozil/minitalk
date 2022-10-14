@@ -1,9 +1,18 @@
-//
-// Created by jiyun on 2022/07/20.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_nbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jiyun <jiyun@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/14 17:24:35 by jiyun             #+#    #+#             */
+/*   Updated: 2022/10/14 17:24:58 by jiyun            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-char    *check_base(char type)
+char	*check_base(char type)
 {
 	if (ft_strchr("udi", type))
 		return ("0123456789");
@@ -13,16 +22,16 @@ char    *check_base(char type)
 		return ("0123456789ABCDEF");
 }
 
-void print_nbr_base(unsigned long nbr, char *base, int notation, int *print_byte)
+void	print_nbr_base(unsigned long nbr, char *base, int notation, int *print_byte)
 {
 	if (nbr / notation)
 		print_nbr_base(nbr / notation, base, notation, print_byte);
 	*print_byte += write(1, &(base[nbr % notation]), 1);
 }
 
-void    print_nbr(char type, unsigned long nbr, int *print_byte)
+void	print_nbr(char type, unsigned long nbr, int *print_byte)
 {
-	char    *base;
+	char	*base;
 
 	base = check_base(type);
 	if (ft_strchr("di", type))
